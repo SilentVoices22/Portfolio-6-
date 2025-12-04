@@ -1,0 +1,61 @@
+/* caosual */
+
+.carousel{
+display: flex;
+gap: 8px;
+padding: 16px;
+
+list-style: none;
+overflow-x: scroll;
+scroll-snap-type: x mandatory;
+scrollbar-width: none;
+-ms-overflow-style: none;
+}
+.carousel::-webkit-scrollbar{
+    display: none;
+}
+
+.item {
+    flex-shrink: 0;
+    width: 80%;
+    height: 90vh;
+
+    background-color: #e22727;
+
+    scroll-snap-align: center;
+}
+
+.content{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+
+    font-family: san-serif;
+    font-size: 64;
+    font-weight: bold;
+}
+
+.list-wrapper {
+  position: relative;
+}
+
+.button {
+  position: absolute;
+  top: 50%;
+
+  width: 3rem;
+  height: 3rem;
+
+  transform: translateY(-50%);
+}
+
+.button--previous {
+  left: 1.5rem;
+
+  transform: rotate(180deg);
+}
+
+.button--next {
+  right: 1.5rem;
+}

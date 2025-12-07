@@ -1,37 +1,54 @@
-<!-- google font code -->
 @import url('https://fonts.googleapis.com/css2?family=Google+Sans+Code:ital,wght@0,300..800;1,300..800&display=swap');
 
-body{
+
+/* pseudo element*/
+
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  background-color: #8D99ae;
+}
+
+li, a, button {
+  font-family: "Google+Sans+Code", sans-serif;
+  text-decoration: none;
+  text-decoration-color: #739772;
+}
+body {
   margin-top: 0px;
   margin-left: 100px;
   margin-right: 100px;
 }
 
-#logo{
-  width: 5rem;
-
-}
-.navBar {
-  list-style-type: none;
-  margin: 0;
-  padding: 0; 
-display: flex;
-}
-
-.navBar li{
-  float: left;
-}
-
-.navbar li a {
-  display: block;
-  text-align: center;
-  padding: 14px 16px;
+header{
   display: flex;
   justify-content: space-between;
-  
+  align-items: center;
+  padding: 30px 10%;
 }
 
+#logo {
+  width: 5rem;
+ cursor: pointer;
+}
 
+.navBar {
+  display: flex;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  gap: 1rem;
+  justify-content: end;
+}
+
+.navBar li {
+  flex-shrink: 1;
+  flex-grow: 0;
+  display: inline-block
+
+}
 
 
 

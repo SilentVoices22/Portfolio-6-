@@ -8,11 +8,13 @@
 *::before,
 *::after {
   box-sizing: border-box;
-  background-color: #8D99ae;
+  margin: 0;
+  padding: 0;
 }
 
+
 li, a, button {
-  font-family: "Google+Sans+Code", sans-serif;
+  font-family: "Google Sans Code", sans-serif;
   text-decoration: none;
   text-decoration-color: #739772;
 }
@@ -20,6 +22,7 @@ body {
   margin-top: 0px;
   margin-left: 100px;
   margin-right: 100px;
+  background-color: #edf2f4;
 }
 
 header{
@@ -32,13 +35,16 @@ header{
 #logo {
   width: 5rem;
  cursor: pointer;
+ order: 3;
+ margin-left: auto
+}
+.navBar {
+   order: 1;
 }
 
 .navBar {
   display: flex;
   list-style-type: none;
-  margin: 0;
-  padding: 0;
   gap: 1rem;
   justify-content: end;
 }
@@ -46,77 +52,61 @@ header{
 .navBar li {
   flex-shrink: 1;
   flex-grow: 0;
-  display: inline-block
-
+  display: inline-block;
+  padding: 0px, 20px;
 }
 
+.navBar li a{
+  transition: all 0.3s ease 0s;
+}
 
+.navBar li a:hover{
+  color: rgb(30, 185, 113)
+}
 
-
-
-/* carousel */
-/*
-.carousel {
+div.container{
+  height: 100vh;
+  width: 100%;
   display: flex;
-  gap: 8px;
-  padding: 16px;
-
-  // remove this sizing to get normal again
-  width: 300px;
-  height: 300px;
-
-  list-style: none;
-  overflow-x: scroll;
-  scroll-snap-type: x mandatory;
-  scrollbar-width: none;
-  -ms-overflow-style: none;
-}
-
-.carousel::-webkit-scrollbar {
-  display: none;
-}
-
-.item {
-  flex-shrink: 0;
-  width: 80%;
-  height: 90vh;
-
-  background-color: #e22727;
-
-  scroll-snap-align: center;
-}
-
-.content {
-  display: flex;
-  align-items: center;
   justify-content: center;
-  height: 100%;
-
-  font-family: san-serif;
-  font-size: 64;
-  font-weight: bold;
-}
-
-.list-wrapper {
+  align-items: center;
   position: relative;
 }
 
-.button {
-  position: absolute;
-  top: 50%;
+@keyframes fade{
+  0%{
+    opacity: 1;
+  }
+  33%{
+    opacity: 0;
+  }
 
-  width: 3rem;
-  height: 3rem;
+  68% {
+    opacity: 0;
+  }
+  100%{ 
+    opacity: 1;
+  }
 
-  transform: translateY(-50%);
+}
+div.container img{
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  position:absolute;
+  top:0;
+  left: 0;
+  animation: fade 9s ease-in-out infinite alternate 
 }
 
-.button--previous {
-  left: 1.5rem;
-
-  transform: rotate(180deg);
+ div.container img:nth-of-type(1){
+  animation-delay: 6s;
 }
 
-.button--next {
-  right: 1.5rem;
+div.container img:nth-of-type(2){
+  animation-delay: 3s;
+}
+
+div.container img:nth-of-type(3){
+  animation-delay: 0s;
 }

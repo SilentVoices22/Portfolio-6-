@@ -25,6 +25,7 @@ body {
   margin-left: 100px;
   margin-right: 100px;
   background-color: #edf2f4;
+  padding-top: 7rem;
 }
 
 
@@ -34,10 +35,16 @@ header{
   justify-content: space-between;
   align-items: center;
   padding: 2rem 10%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+  
 }
 
 #logo {
-  width: 10vh;
+  width: 7vh;
  cursor: pointer;
  order: 3;
  margin-left: auto

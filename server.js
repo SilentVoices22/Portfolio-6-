@@ -3,6 +3,7 @@ const PORT = 8080
 const fs = require('fs');
 const path = require('path');
 
+
 const dataPath = path.join(__dirname, 'port6data.json');
 let port6data = [];
 
@@ -12,6 +13,11 @@ function loadData() {
 }
 
 loadData();
+
+app.get('/app/applicants', (req, res) => {
+  const { INSTITUTIONSAKT_BETEGNELSE, Køn } = req.query;
+  res.json({});
+})
 
 app.listen(
     PORT,() => console.log('DEN LEVER PÅ localhost:${PORT}')

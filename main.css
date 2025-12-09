@@ -10,13 +10,15 @@
   box-sizing: border-box;
   margin: 0;
   padding: 0;
+  scroll-behavior: smooth;
 }
 
 
-li, a, button {
+li, a, button, p {
   font-family: "Google Sans Code", sans-serif;
   text-decoration: none;
   text-decoration-color: #739772;
+  font-size: 0.8vw;
 }
 body {
   margin-top: 0px;
@@ -25,15 +27,17 @@ body {
   background-color: #edf2f4;
 }
 
+
+
 header{
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 30px 10%;
+  padding: 2rem 10%;
 }
 
 #logo {
-  width: 5rem;
+  width: 10vh;
  cursor: pointer;
  order: 3;
  margin-left: auto
@@ -64,8 +68,10 @@ header{
   color: rgb(30, 185, 113)
 }
 
+
+/* Slider  */ 
 div.container{
-  height: 100vh;
+  height: 40vh;
   width: 100%;
   display: flex;
   justify-content: center;

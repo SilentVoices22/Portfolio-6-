@@ -8,7 +8,8 @@ const fs = require('fs');
 const path = require('path');
 
 const url = 'mongodb://localhost:27017';
-const dbName = 'applicants_db';
+const applicants_db = 'applicants_db';
+const salary_db = 'average_salary'
 const collectionName = 'applicants';
 
 let db;
@@ -20,13 +21,18 @@ async function connectToMongo() {
     await client.connect();
     console.log('Connected to MongoDB');
     
-    db = client.db(dbName);
+    db = client.db(applicants_db);
     collection = db.collection(collectionName);
   } catch (error) {
     console.error('Failed to connect to MongoDB:', error);
     process.exit(1);
   }
 }
+
+app.get('/app/salary', async (req, res) => {
+  const results = await db.collection(salary_db).find({}).toArray();
+  res.json(results);
+});
 
 app.get('/app/applicants', async (req, res) => {
   const { INSTITUTIONSAKT_BETEGNELSE, Køn } = req.query;

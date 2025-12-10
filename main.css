@@ -28,6 +28,12 @@ body {
   padding-top: 7rem;
 }
 
+hr {
+  color:  #0038ab;
+  display: block;
+
+}
+
 
 
 header{
@@ -75,6 +81,24 @@ header{
   color: rgb(30, 185, 113)
 }
 
+main {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap
+  
+}
+
+div.rightP p{
+  display: flex;
+  justify-self: start;
+
+}
+
+aside div.leftP p{
+  display: flex;
+  justify-con
+}
+
 
 /* Slider  */ 
 div.container{
@@ -85,6 +109,10 @@ div.container{
   align-items: center;
   position: relative;
 }
+
+
+
+
 
 @keyframes fade{
   0%{

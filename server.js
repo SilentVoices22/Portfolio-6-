@@ -1,24 +1,54 @@
-const app = require ('express')();
+const express = require('express');
+const { MongoClient } = require('mongodb');
+
+const app = express();
 const PORT = 8080
+
 const fs = require('fs');
 const path = require('path');
 
+const url = 'mongodb://localhost:27017';
+const dbName = 'applicants_db';
+const collectionName = 'applicants';
 
-const dataPath = path.join(__dirname, 'port6data.json');
-let port6data = [];
+let db;
+let collection;
 
-function loadData() {
-  const fileContents = fs.readFileSync(dataPath, 'utf8');
-  port6data = JSON.parse(fileContents);
+async function connectToMongo() {
+  try {
+    const client = new MongoClient(url);
+    await client.connect();
+    console.log('Connected to MongoDB');
+    
+    db = client.db(dbName);
+    collection = db.collection(collectionName);
+  } catch (error) {
+    console.error('Failed to connect to MongoDB:', error);
+    process.exit(1);
+  }
 }
 
-loadData();
-
-app.get('/app/applicants', (req, res) => {
+app.get('/app/applicants', async (req, res) => {
   const { INSTITUTIONSAKT_BETEGNELSE, Køn } = req.query;
-  res.json({});
-})
+  
+  const filter = {};
+  if (INSTITUTIONSAKT_BETEGNELSE) filter.INSTITUTIONSAKT_BETEGNELSE = INSTITUTIONSAKT_BETEGNELSE;
+  if (Køn) filter.Køn = Køn;
+  
+  const results = await collection.find(filter).toArray();
+  res.json(results);
+});
 
-app.listen(
-    PORT,() => console.log('DEN LEVER PÅ localhost:${PORT}')
-)
+app.get('/app/applicants/gender_work', async (req, res) => {
+  const results = await collection.find({}, { 
+    projection: { Køn: 1, INSTITUTIONSAKT_BETEGNELSE: 1, _id: 0 }
+  }).toArray();
+  
+  res.json(results);
+});
+
+connectToMongo().then(() => {
+  app.listen(PORT, () => {
+    console.log(`Server is running on http://localhost:${PORT}`);
+  });
+});

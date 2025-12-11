@@ -35,13 +35,7 @@ app.get('/app/salary', async (req, res) => {
 });
 
 app.get('/app/applicants', async (req, res) => {
-  const { INSTITUTIONSAKT_BETEGNELSE, Køn } = req.query;
-  
-  const filter = {};
-  if (INSTITUTIONSAKT_BETEGNELSE) filter.INSTITUTIONSAKT_BETEGNELSE = INSTITUTIONSAKT_BETEGNELSE;
-  if (Køn) filter.Køn = Køn;
-  
-  const results = await collection.find(filter).toArray();
+  const results = await collection.find().toArray();
   res.json(results);
 });
 

@@ -15,13 +15,22 @@ const collectionName = 'applicants';
 let db;
 let collection;
 
+// Enable CORS
+app.use((req, res, next) => {
+  res.header('Access-Control-Allow-Origin', '*');
+  res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
+  next();
+});
+
+// Serve static files
+app.use(express.static(__dirname));
 
 async function connectToMongo() {
   try {
     const client = new MongoClient(url);
     await client.connect();
     console.log('Connected to MongoDB');
-    
+
     db = client.db(applicants_db);
     collection = db.collection(collectionName);
   } catch (error) {

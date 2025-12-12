@@ -1,67 +1,153 @@
+@import url('https://fonts.googleapis.com/css2?family=Google+Sans+Code:ital,wght@0,300..800;1,300..800&display=swap');
 
 
-/* carousel */
+/* pseudo element*/
 
-.carousel{
-display: flex;
-gap: 8px;
-padding: 16px;
 
-// remove this sizing to get normal again
-width: 300px;
-height: 300px;
-
-list-style: none;
-overflow-x: scroll;
-scroll-snap-type: x mandatory;
-scrollbar-width: none;
--ms-overflow-style: none;
-}
-.carousel::-webkit-scrollbar{
-    display: none;
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  scroll-behavior: smooth;
 }
 
-.item {
-    flex-shrink: 0;
-    width: 80%;
-    height: 90vh;
 
-    background-color: #e22727;
-
-    scroll-snap-align: center;
+li, a, button, p {
+  font-family: "Google Sans Code", sans-serif;
+  text-decoration: none;
+  text-decoration-color: #739772;
+  font-size: 0.8vw;
+}
+body {
+  margin-top: 0px;
+  margin-left: 100px;
+  margin-right: 100px;
+  background-color: #edf2f4;
+  padding-top: 7rem;
 }
 
-.content{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 100%;
+hr {
+  color:  #0038ab;
+  display: block;
 
-    font-family: san-serif;
-    font-size: 64;
-    font-weight: bold;
 }
 
-.list-wrapper {
+
+
+header{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 2rem 10%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+  
+}
+
+#logo {
+  width: 7vh;
+ cursor: pointer;
+ order: 3;
+ margin-left: auto
+}
+.navBar {
+   order: 1;
+}
+
+.navBar {
+  display: flex;
+  list-style-type: none;
+  gap: 1rem;
+  justify-content: end;
+}
+
+.navBar li {
+  flex-shrink: 1;
+  flex-grow: 0;
+  display: inline-block;
+  padding: 0px, 20px;
+}
+
+.navBar li a{
+  transition: all 0.3s ease 0s;
+}
+
+.navBar li a:hover{
+  color: rgb(30, 185, 113)
+}
+
+main {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap
+  
+}
+
+div.rightP p{
+  display: flex;
+  justify-self: start;
+
+}
+
+aside div.leftP p{
+  display: flex;
+  justify-con
+}
+
+
+/* Slider  */ 
+div.container{
+  height: 40vh;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   position: relative;
 }
 
-.button {
-  position: absolute;
-  top: 50%;
 
-  width: 3rem;
-  height: 3rem;
 
-  transform: translateY(-50%);
+
+
+@keyframes fade{
+  0%{
+    opacity: 1;
+  }
+  33%{
+    opacity: 0;
+  }
+
+  68% {
+    opacity: 0;
+  }
+  100%{ 
+    opacity: 1;
+  }
+
+}
+div.container img{
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  position:absolute;
+  top:0;
+  left: 0;
+  animation: fade 9s ease-in-out infinite alternate 
 }
 
-.button--previous {
-  left: 1.5rem;
-
-  transform: rotate(180deg);
+ div.container img:nth-of-type(1){
+  animation-delay: 6s;
 }
 
-.button--next {
-  right: 1.5rem;
+div.container img:nth-of-type(2){
+  animation-delay: 3s;
+}
+
+div.container img:nth-of-type(3){
+  animation-delay: 0s;
 }

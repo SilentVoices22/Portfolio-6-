@@ -4,48 +4,110 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title></title>
+    <title>Women in tech</title>
     <link rel="stylesheet" href=" main.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.5.1/dist/chart.umd.min.js"></script>
 </head>
 
 <body>
 
     <header>
-        <ul class="navigator">
-            <li> <img src="/pages/pictures/ekBlueCircle.png" alt="Blue Circle with logo short ancryonym og EK"></li>-
-            <li>Home</li>
-            <li> Service</li>
-            <li>Career</li>
-            <li>Contacts</li>
-
-        </ul>
+        <div class="logobar">
+            <a href="http://" target="_blank" rel="noopener noreferrer"><img src="./pages/pictures/ekBlueCircle.png"
+                    id="logo" alt="EK blue circle logo"></a>
+        </div>
+        <nav>
+            <ul class="navBar">
+                <li><a href="http://" target="_blank" rel="noopener noreferrer">Service</a></li>
+                <li><a href="http://" target="_blank" rel="noopener noreferrer">Career</a></li>
+                <li><a href="http://" target="_blank" rel="noopener noreferrer">Contacts</a></li>
+            </ul>
+        </nav>
     </header>
 
+    <div class="container">
+        <img src="/pages/pictures/women_in_tech_cover_.webp" alt="Woman who works with code">
+        <img src="/pages/pictures/Paving_the_Way_for_Women_in_Tech_800x450.png" alt=" Woman looks she is focusing of doing office work ">
+        <img src="/pages/pictures/women coding.jpg" alt="Woman that is looking at her code ">
+    </div>
+    <br>
+    <hr>
+    <br>
+    <section>
+        <p>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla faucibus massa ut eros elementum, vitae
+            mattis mi mattis.
+            Morbi tincidunt nibh convallis nibh fringilla pellentesque. Fusce et commodo ex. Vestibulum ante ipsum
+            primis in faucibus orci luctus et ultrices posuere cubilia curae;
+            Nunc in metus eu nunc aliquet iaculis. Fusce volutpat sollicitudin bibendum. Praesent vitae sollicitudin
+            nunc. In eu libero facilisis, luctus ante a, dictum mauris.
+            Mauris laoreet ex vitae felis suscipit sollicitudin. Quisque in velit vel dolor sodales bibendum nec et
+            justo. Sed commodo nulla eget orci pellentesque, ut accumsan tortor suscipit.
+            Nullam vulputate bibendum urna, at tristique neque sollicitudin in. Curabitur urna erat, volutpat ut augue
+            at, luctus consequat sem.
+            Maecenas pretium enim et aliquet sodales. Integer imperdiet lectus auctor justo feugiat faucibus. Quisque id
+            elementum sapien, ac interdum eros.
+            Interdum et malesuada fames ac ante ipsum primis in faucibus. Suspendisse ac auctor sapien. Vivamus eget
+            nulla a massa imperdiet tincidunt. Aliquam ut ipsum pellentesque,
+            eleifend metus nec, consequat turpis.
+        </p>
+    </section>
+    <br>
+    <hr>
+    <br>
 
-    <div class="list-wrapper">
-        <ul class="carousel">
-            <li class="item">
-                <div class="content">Item 1</div>
-            </li>
-            <li class="item">
-                <div class="content">Item 2</div>
-            </li>
-            <li class="item">
-                <div class="content">Item 3</div>
-            </li>
-            <li class="item">
-                <div class="content">Item 4</div>
-            </li>
-            <li class="item">
-                <div class="content">Item 5</div>
-            </li>
-        </ul>
+    <main>
 
-   <button onclick="getClick('previous')" class="button button--previous" type="button">➜</button>
-  <button onclick="getClick('next')" class="button button--next" type="button">➜</button>
+
+        <div class="LeftP">
+            <p>
+                Morbi tincidunt nibh convallis nibh fringilla pellentesque. Fusce et commodo ex. Vestibulum ante ipsum
+                primis in faucibus orci luctus et ultrices posuere cubilia curae;Morbi tincidunt nibh convallis nibh
+                fringilla pellentesque. Fusce et commodo ex. Vestibulum ante ipsum
+                primis in faucibus orci luctus et ultrices posuere cubilia curae; Morbi tincidunt nibh convallis nibh
+                fringilla pellentesque. Fusce et commodo ex. Vestibulum ante ipsum
+                primis in faucibus orci luctus et ultrices posuere cubilia curae;
+            </p>
+        </div>
+<hr>
+
+        <aside>
+            <div class="rightP">
+                <p>
+                    Maecenas pretium enim et aliquet sodales. Integer imperdiet lectus auctor justo feugiat faucibus.
+                    Quisque id
+                    elementum sapien, ac interdum eros.
+                    Interdum et malesuada fames ac ante ipsum primis in faucibus. Suspendisse ac auctor sapien. Vivamus
+                    eget
+                    nulla a massa imperdiet tincidunt. Aliquam ut ipsum pellentesque,
+                    eleifend metus nec, consequat turpis.
+                </p>
+            </div>
+        </aside>
+    </main>
+
+
+    <div>
+        <canvas id="chart"></canvas>
     </div>
 
+    <footer>
+        <div>
+            <ul>
+                <li>
+                    stuff
+                </li>
+                <li>
+                    stuff2
+                </li>
+                <li>
+                    stuff 3
+                </li>
+            </ul>
+        </div>
+    </footer>
     <script src="frontend.js"></script>
+    <script src="charts.js"></script>
 </body>
 
 </html>

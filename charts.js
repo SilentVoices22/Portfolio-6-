@@ -36,44 +36,29 @@ async function fetchItApplicants() {
 }
 
 function tallyByInstitution(items) {
-    const countsByGender = {
-        Mand: {},
-        Kvinde: {}
-    };
+    const counts = { Mand: {}, Kvinde: {} };
 
     items.forEach(({ INSTITUTIONSAKT_BETEGNELSE, Køn }) => {
-        if (Køn === 'Mand' || Køn === 'Kvinde') {
-            countsByGender[Køn][INSTITUTIONSAKT_BETEGNELSE] =
-                (countsByGender[Køn][INSTITUTIONSAKT_BETEGNELSE] || 0) + 1;
-        }
+        if (!counts[Køn]) return;
+        counts[Køn][INSTITUTIONSAKT_BETEGNELSE] = (counts[Køn][INSTITUTIONSAKT_BETEGNELSE] || 0) + 1;
     });
 
-    const allInstitutions = new Set([
-        ...Object.keys(countsByGender.Mand),
-        ...Object.keys(countsByGender.Kvinde)
-    ]);
-
-    const labels = Array.from(allInstitutions);
-    const mandData = labels.map(label => countsByGender.Mand[label] || 0);
-    const kvindeData = labels.map(label => countsByGender.Kvinde[label] || 0);
+    const labels = [...new Set([...Object.keys(counts.Mand), ...Object.keys(counts.Kvinde)])];
 
     return {
         labels,
-        mandData,
-        kvindeData
+        mandData: labels.map(l => counts.Mand[l] || 0),
+        kvindeData: labels.map(l => counts.Kvinde[l] || 0)
     };
 }
 
 async function renderItApplicantsChart() {
     const applicants = await fetchItApplicants();
-    if (!applicants || applicants.length === 0) {
-        console.warn("No IT applicants data available");
-        return;
-    }
+    if (!applicants?.length) return console.warn("No IT applicants data available");
+
     const { labels, mandData, kvindeData } = tallyByInstitution(applicants);
 
-    const ctx = document.querySelector('#chart').getContext('2d');
-    new Chart(ctx, {
+    new Chart(document.querySelector('#chart'), {
         type: 'bar',
         data: {
             labels,
@@ -97,13 +82,7 @@ async function renderItApplicantsChart() {
         options: {
             responsive: true,
             scales: {
-                x: {
-                    stacked: false
-                },
-                y: {
-                    stacked: false,
-                    beginAtZero: true
-                }
+                y: { beginAtZero: true }
             }
         },
     });

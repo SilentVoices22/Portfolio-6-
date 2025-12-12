@@ -1,36 +1,10 @@
-async function fetchSalary(){
-    try{
-        const res = await fetch("http://localhost:8080/app/salary");
-        if (!res.ok) throw new Error(`Status ${res.status}`);
-        const data = await res.json();
-        console.log("Average salary" , data)
-        return data;
-        } catch (error) {
-            console.error("Could not fetch", error);
-        }
-    }
-
-async function fetchGenderWork(){
-    try{
-        const res = await fetch("http://localhost:8080/app/applicants/gender_work");
-        if (!res.ok) throw new Error(`Status ${res.status}`);
-        const data = await res.json();
-        console.log("Gender work" , data)
-        return data;
-        } catch (error) {
-            console.error("Could not fetch", error);
-        }
-    }
-
-async function fetchItApplicants() {
+async function fetchData(endpoint) {
     try {
-        const res = await fetch('http://localhost:8080/app/applicants/it-applicants');
+        const res = await fetch(`http://localhost:8080${endpoint}`);
         if (!res.ok) throw new Error(`Status ${res.status}`);
-        const data = await res.json();
-        console.log("IT applicants", data);
-        return data;
+        return await res.json();
     } catch (error) {
-        console.error("Could not fetch IT applicants", error);
+        console.error(`Could not fetch ${endpoint}:`, error);
         return [];
     }
 }
@@ -53,8 +27,8 @@ function tallyByInstitution(items) {
 }
 
 async function renderItApplicantsChart() {
-    const applicants = await fetchItApplicants();
-    if (!applicants?.length) return console.warn("No IT applicants data available");
+    const applicants = await fetchData('/app/applicants/it-applicants');
+    if (!applicants?.length) return;
 
     const { labels, mandData, kvindeData } = tallyByInstitution(applicants);
 
@@ -88,5 +62,47 @@ async function renderItApplicantsChart() {
     });
 }
 
-renderItApplicantsChart();
+async function renderSalaryChart() {
+    const salaryData = await fetchData('/app/salary');
+    if (!salaryData?.length) return;
 
+    new Chart(document.querySelector('#salaryChart'), {
+        type: 'line',
+        data: {
+            labels: salaryData.map(item => item.Kvartal),
+            datasets: [
+                {
+                    label: 'Gennemsnitlig løn',
+                    data: salaryData.map(item => parseFloat(item['Gennemsnitlig-løn'])),
+                    borderColor: 'rgba(75, 192, 192, 1)',
+                    backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                    borderWidth: 3,
+                    pointRadius: 5,
+                    pointBackgroundColor: 'rgba(75, 192, 192, 1)',
+                    tension: 0.1,
+                    fill: true
+                }
+            ],
+        },
+        options: {
+            responsive: true,
+            scales: {
+                y: {
+                    title: {
+                        display: true,
+                        text: 'Gennemsnitlig-løn'
+                    }
+                },
+                x: {
+                    title: {
+                        display: true,
+                        text: 'Kvartal'
+                    }
+                }
+            }
+        },
+    });
+}
+
+renderItApplicantsChart();
+renderSalaryChart();

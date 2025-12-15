@@ -174,11 +174,17 @@ div.container img:nth-of-type(3) {
   animation-delay: 0s;
 }
 
+.afslutning {
+  padding: 20px;
+  font-size: 14px;
+  border-top: 2px solid #0038ab;
+}
+
 footer {
   padding: 16px;
   text-align: center;
   font-size: 14px;
-  border-top: 1px solid #0038ab;
+  border-top: 2px solid #0038ab;
 }
 
 footer .names {

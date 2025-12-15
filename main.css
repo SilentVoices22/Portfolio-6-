@@ -173,3 +173,21 @@ div.container img:nth-of-type(2) {
 div.container img:nth-of-type(3) {
   animation-delay: 0s;
 }
+
+footer {
+  padding: 16px;
+  text-align: center;
+  font-size: 14px;
+  border-top: 1px solid #0038ab;
+}
+
+footer .names {
+  margin: 0;
+  font-weight: 500;
+}
+
+footer .school {
+  margin: 4px 0 0;
+  font-size: 13px;
+  color: #666;
+}
